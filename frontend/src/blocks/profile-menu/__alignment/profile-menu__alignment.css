@@ -1,0 +1,14 @@
+.profile-menu__alignment {
+  display: flex;
+  align-items: center;
+  /* max-width: 415px; */
+  margin: 60px 0 16px 0;
+  padding: 0 0;
+}
+@media screen and (max-width: 928px) {
+  .profile-menu__alignment {
+    text-align: center;
+    justify-content: center;
+    margin: 30px 0 14px 0;
+  }
+}

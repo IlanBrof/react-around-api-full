@@ -1,0 +1,13 @@
+.profile-menu__info {
+  /* max-width: 415px; */
+  justify-content: center;
+  align-content: center;
+  margin: 0 0 0 0;
+  padding: 0 0;
+}
+
+@media screen and (max-width: 928px) {
+  .profile-menu__info {
+    margin: 0 auto;
+  }
+}

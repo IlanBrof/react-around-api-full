@@ -1,0 +1,25 @@
+.popup-menu__input {
+  max-width: 358px;
+  width: 100%;
+  border-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px 5px 13.26px 5px;
+  margin: 30px 0 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.popup-menu__input:nth-last-child(2) {
+  margin-bottom: 46px;
+}
+
+@media screen and (max-width: 420px) {
+  .popup-menu__input {
+    padding: 2.5px 2.5px 9px 2.5px;
+  }
+}
+
+.popup-menu__input_type_error {
+  border-bottom: 1px #ff0000 solid;
+}

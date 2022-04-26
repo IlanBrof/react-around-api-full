@@ -1,0 +1,15 @@
+.popup-menu__error {
+  display: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin: 5px 0 0 0;
+  padding: 0 0;
+  height: 22px;
+}
+
+.popup-menu__error_visible {
+  display: block;
+}

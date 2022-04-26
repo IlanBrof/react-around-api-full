@@ -1,0 +1,6 @@
+.popup-menu__image-box {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  color: white;
+}

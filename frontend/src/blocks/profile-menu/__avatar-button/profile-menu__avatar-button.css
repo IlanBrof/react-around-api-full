@@ -1,0 +1,30 @@
+.profile-menu__avatar-button {
+  background-image: url(../../../images/profile_edit.svg);
+  height: 120px;
+  width: 120px;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 100%;
+  position: absolute;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  cursor: pointer;
+  margin: 40px 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.profile-menu__avatar-button:hover {
+  opacity: 1;
+  transition: ease-in-out 350ms;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 846px) {
+  .profile-menu__avatar-button {
+    margin: 20px auto 0 auto;
+  }
+}

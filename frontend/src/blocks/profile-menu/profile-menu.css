@@ -1,0 +1,15 @@
+.profile-menu {
+  display: flex;
+  margin: 0 0;
+  padding: 0 0;
+  max-width: 100%;
+  /* align-items: center; */
+}
+
+@media screen and (max-width: 928px) {
+  .profile-menu {
+    text-align: center;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}

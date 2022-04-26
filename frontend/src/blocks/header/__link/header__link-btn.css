@@ -1,0 +1,20 @@
+.header__link-btn {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 5px 0 0 0;
+}
+
+.header__link-btn:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+@media screen and (max-width:480px) {
+    .header__link-btn {
+        margin: 0 30px 0 0;
+    }
+}

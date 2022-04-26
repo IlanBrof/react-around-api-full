@@ -1,0 +1,23 @@
+.popup-menu__close-button {
+  top: -50px;
+  right: -50px;
+  border: none;
+  background: url(../../../images/X_icon.svg);
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-size: contain;
+}
+
+.popup-menu__close-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+@media screen and (max-width: 540px) {
+  .popup-menu__close-button {
+    right: 0;
+    width: 26px;
+    height: 26px;
+  }
+}

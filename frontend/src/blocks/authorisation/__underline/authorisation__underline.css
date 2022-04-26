@@ -1,0 +1,13 @@
+.authorisation__underline {
+    margin: 15px 0 80px 0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.authorisation__underline:hover {
+    text-decoration: underline;
+}

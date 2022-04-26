@@ -1,0 +1,22 @@
+.popup-menu__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 34px 0 55px 0;
+  padding: 0 0 0 0;
+  max-width: 330px;
+}
+
+.popup-menu__title_delConfirm {
+  margin: 34px 0 10px 0;
+}
+
+@media screen and (max-width: 420px) {
+  .popup-menu__title {
+    margin: 25px 0 76px 0;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

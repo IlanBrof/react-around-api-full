@@ -1,0 +1,16 @@
+.header_hamburger-menu {
+ display: none;   
+}
+
+@media screen and (max-width:480px) {
+  .header_hamburger-menu {
+    display: block;
+    background: none;
+    margin: 5px 30px 0 0;
+    padding: 2px 2px;
+    width: 35px;
+    height: 35px;
+    border: none;
+  }
+}
+

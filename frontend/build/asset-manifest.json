@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/react-around-auth/static/css/main.dac87297.css",
+    "main.js": "/react-around-auth/static/js/main.ab43ec21.js",
+    "static/media/Inter-Black.woff?v=3.19": "/react-around-auth/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/react-around-auth/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff": "/react-around-auth/static/media/Inter-Medium.e03c0ca5d884e95176c1.woff",
+    "static/media/Inter-Black.woff2?v=3.19": "/react-around-auth/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/react-around-auth/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/react-around-auth/static/media/logo.4e8e0a1d604782a0dff8e5b1a5441e4d.svg",
+    "static/media/like_button.svg": "/react-around-auth/static/media/like_button.3826c074a1b94b101e38.svg",
+    "index.html": "/react-around-auth/index.html",
+    "static/media/Trash.svg": "/react-around-auth/static/media/Trash.c4956c32989e66228de8.svg",
+    "static/media/login_fail.svg": "/react-around-auth/static/media/login_fail.df8eddf661ff88f2d0efd3d570d14309.svg",
+    "static/media/login_success.svg": "/react-around-auth/static/media/login_success.1b6082f862eac35e2514460237d96ecc.svg",
+    "static/media/like_button-active.svg": "/react-around-auth/static/media/like_button-active.226461bd64622361ffb2.svg",
+    "static/media/X_icon.svg": "/react-around-auth/static/media/X_icon.0a2678e11f71ce96ede3.svg",
+    "static/media/edit_button.svg": "/react-around-auth/static/media/edit_button.a1892ea72cb87c8fc3aa.svg",
+    "static/media/profile_edit.svg": "/react-around-auth/static/media/profile_edit.a086f758840ae814ecde.svg",
+    "static/media/plus_button.svg": "/react-around-auth/static/media/plus_button.d86bb2edc2f6eadb96b7.svg",
+    "static/media/save_button_disabled.svg": "/react-around-auth/static/media/save_button_disabled.c7368ac1c77b66ecb230.svg",
+    "main.dac87297.css.map": "/react-around-auth/static/css/main.dac87297.css.map",
+    "main.ab43ec21.js.map": "/react-around-auth/static/js/main.ab43ec21.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dac87297.css",
+    "static/js/main.ab43ec21.js"
+  ]
+}

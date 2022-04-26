@@ -1,0 +1,6 @@
+.popup-menu__submit-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0;
+  padding: 0 0;
+}
