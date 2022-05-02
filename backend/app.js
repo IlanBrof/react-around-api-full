@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const dotenv = require('dotenv').config();
 const cors = require('cors');
 const helmet = require('helmet');
 const auth = require('./middleware/auth');

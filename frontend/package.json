@@ -1,7 +1,7 @@
 {
-  "name": "react-around-auth",
+  "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://ilanbrof.github.io/react-around-auth",
+  "homepage": "",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -22,7 +22,7 @@
     "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && scp -r ./build/* ilanbrof1@ilanbrof.students.nomoreparties.sbs:/home/practicumuser/frontend"
   },
   "eslintConfig": {
     "extends": [
