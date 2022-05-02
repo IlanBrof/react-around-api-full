@@ -5,13 +5,13 @@ const AccessDeniedErr = require('./errors/AccessDenied');
 
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
-  try {
-    if (!authorization || !authorization.startsWith('Bearer ')) {
-      throw new UnauthorizedErr('Unauthorized'); //status(401)
-    }
-      const token = authorization.replace('Bearer ', '');
-    let payload;
 
+  if (!authorization || !authorization.startsWith('Bearer ')) {
+    throw new UnauthorizedErr('Unauthorized'); //status(401)
+  }
+  const token = authorization.replace('Bearer ', '');
+  let payload;
+  try {
     payload = jwt.verify(
       token,
       NODE_ENV === 'production' ? JWT_SECRET : 'super-secret-key'
@@ -20,7 +20,6 @@ const auth = (req, res, next) => {
       throw new AccessDeniedErr('Access Denied'); //status(403)
     }
     req.user = payload;
-    next();
   } catch (err) {
     next(err);
   }
