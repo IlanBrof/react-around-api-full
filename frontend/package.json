@@ -22,7 +22,7 @@
     "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* ilanbrof1@ilanbrof.students.nomoreparties.sbs:/home/practicumuser/frontend"
+    "deploy": "npm run build && scp -r ./build/* ilanbrof1@ilanbrof.students.nomoreparties.sbs:/home/ilanbrof1/react-around-api-full/frontend"
   },
   "eslintConfig": {
     "extends": [
