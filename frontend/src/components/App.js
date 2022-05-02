@@ -46,15 +46,16 @@ function App() {
         .then((res) => {
           if (res) {
             const data = {
-              email: res.data.email,
-              id: res.data._id,
+              email: res.email,
+              id: res._id,
             };
-
             setIsLoggedIn(true);
             setUserData(data);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.log('WTH?', err);
+        });
     }
   }, []);
 
@@ -66,17 +67,17 @@ function App() {
 
   function handleRegistration(email, password) {
     try {
-    auth
-      .signup(email, password)
-      .then(() => {
-        setRegistrationSuccess(true);
-        history.push('/');
-      })
-      .catch((err) => {
-        console.log(err);
-        setRegistrationSuccess(false);
-      })}
-    finally {
+      auth
+        .signup(email, password)
+        .then(() => {
+          setRegistrationSuccess(true);
+          history.push('/');
+        })
+        .catch((err) => {
+          setRegistrationSuccess(false);
+          console.log('What', err);
+        });
+    } finally {
       setIsInfoToolTipOpen(true);
     }
   }
@@ -109,6 +110,7 @@ function App() {
   }
 
   React.useEffect(() => {
+    if (!isLoggedIn) return;
     api
       .getUserInfo()
       .then((data) => {
@@ -117,9 +119,10 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
+    if (!isLoggedIn) return;
     (async function () {
       setLoading(true);
       try {
@@ -133,23 +136,22 @@ function App() {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [isLoggedIn]);
 
-  function handleUserInfo(newCard) {
-    api
-      .editUserInfo(newCard.name, newCard.about)
-      .then((data) => {
-        setCurrentUser(data);
+  function handleUserInfo(userData) {
+    try {
+      api.editUserInfo(userData.name, userData.about).then((data) => {
+        setUserData(data);
         closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
       });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   function handleCardLike(card) {
     // Check one more time if this card was already liked
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     // Send a request to the API and getting the updated card data
     if (!isLiked) {
       api
@@ -162,7 +164,7 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
-    } else {
+    } else if (isLiked) {
       api
         .dislike(card._id)
         .then((newCard) => {
@@ -202,15 +204,14 @@ function App() {
   }
 
   function handleUpdateAvatar(userData) {
-    api
-      .setUserAvatar(userData.avatar)
-      .then((data) => {
-        setCurrentUser(data);
+    try {
+      api.setUserAvatar(userData.avatar).then((data) => {
+        setUserData(data);
         closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
       });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   function handleEditProfilePopupClick() {
@@ -235,12 +236,11 @@ function App() {
   }
 
   function handleHamburgerMenuClick() {
-    if (!isHamburgerMenuOpen) { 
+    if (!isHamburgerMenuOpen) {
       setIsHamburgerMenuOpen(true);
     } else {
-      setIsHamburgerMenuOpen(false)
+      setIsHamburgerMenuOpen(false);
     }
-    
   }
 
   function handleCardData(cardData) {

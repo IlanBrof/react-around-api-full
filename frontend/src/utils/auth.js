@@ -1,4 +1,5 @@
-const BASE_URL = 'https://register.nomoreparties.co';
+// const BASE_URL = 'https://api.ilanbrof.students.nomoreparties.sbs';
+const BASE_URL = 'http://localhost:3000';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -40,7 +41,7 @@ const checkToken = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${token}`,
+            authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
             Accept: 'application/json'
         },

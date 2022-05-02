@@ -8,12 +8,17 @@ function EditProfilePopup(props) {
   const [profileDescription, setProfileDescription] = React.useState('');
 
   function handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault(); // This will cause the page to reload, the data is not being rendered with this on ,previous projects had this line
     props.onUpdateUserInfo({
       name: profileName,
       about: profileDescription,
     });
   }
+
+  React.useEffect(() => {
+    setProfileName(currentUser.name || '');
+    setProfileDescription(currentUser.about || '');
+  }, [currentUser]);
 
   function handleProfileNameUpdate(e) {
     setProfileName(e.target.value);
@@ -22,11 +27,6 @@ function EditProfilePopup(props) {
   function handleProfileDescriptionUpdate(e) {
     setProfileDescription(e.target.value);
   }
-
-  React.useEffect(() => {
-    setProfileName(currentUser.name || '');
-    setProfileDescription(currentUser.about || '');
-  }, [currentUser, props.isOpen]);
 
   return (
     <PopupWithForm

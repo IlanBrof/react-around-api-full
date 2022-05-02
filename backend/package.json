@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
+    "dev": "JWT_SECRET=super-secret-key nodemon app.js",
     "lint": "npx eslint ."
   },
   "repository": {
@@ -19,14 +19,23 @@
   },
   "homepage": "https://github.com/IlanBrof/around-express#readme",
   "devDependencies": {
-    "eslint": "^8.12.0",
+    "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
-    "mongoose": "^6.2.10"
+    "express-winston": "^4.2.0",
+    "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.10",
+    "validator": "^13.7.0",
+    "winston": "^3.7.2"
   }
 }

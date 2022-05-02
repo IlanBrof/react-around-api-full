@@ -3,8 +3,8 @@ class Api {
     this._url = options.baseUrl;
     this._token = options.token;
     this._headers = {
-      authorization: this._token,
       'Content-type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
     };
   }
 
@@ -12,7 +12,7 @@ class Api {
     if (response.ok) {
       return response.json();
     } else {
-      console.log('Something went wrong', response.status, response.statusText);
+      console.log(response.status, response.statusText);
     }
   }
 
@@ -30,13 +30,14 @@ class Api {
     return this._checkResponse(response);
   }
 
-  async editUserInfo(name, about) {
+  async editUserInfo(name, about, avatar) {
     const response = await fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: about,
+        avatar: avatar,
       }),
     });
     return this._checkResponse(response);
@@ -60,7 +61,7 @@ class Api {
   }
 
   async like(cardId) {
-    const response = await fetch(`${this._url}/cards/likes/${cardId}`, {
+    const response = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this._headers,
     });
@@ -68,7 +69,7 @@ class Api {
   }
 
   async dislike(cardId) {
-    const response = await fetch(`${this._url}/cards/likes/${cardId}`, {
+    const response = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     });
@@ -86,8 +87,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://around.nomoreparties.co/v1/group-12',
-  token: '10d5550b-e17c-437f-9d04-3dde6b160e5d',
+  // baseUrl: 'https://api.ilanbrof.students.nomoreparties.sbs',
+  baseUrl: 'http://localhost:3000',
 });
 
 export default api;

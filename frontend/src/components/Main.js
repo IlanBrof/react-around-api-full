@@ -5,7 +5,6 @@ import Loader from './Loader';
 
 function Main(props) {
   const currentUser = React.useContext(CurrentUserContext);
-
   return (
     <main className="main">
       <section className="profile-menu">
