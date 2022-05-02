@@ -1,4 +1,5 @@
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { NODE_ENV } = process.env;
+//JWT_SECRET
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const UnauthorizedErr = require('../middleware/errors/Unauthorized');

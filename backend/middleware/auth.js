@@ -20,6 +20,7 @@ const auth = (req, res, next) => {
       throw new AccessDeniedErr('Access Denied'); //status(403)
     }
     req.user = payload;
+    next();
   } catch (err) {
     next(err);
   }

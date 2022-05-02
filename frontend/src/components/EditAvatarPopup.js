@@ -10,7 +10,7 @@ function EditAvatarPopup(props) {
   }, [props.isOpen]);
 
   function handleSubmit(e) {
-    // e.preventDefault(); // This will cause the page to reload, the data is not being rendered with this on ,previous projects had this line
+    e.preventDefault(); // This will cause the page to reload, the data is not being rendered with this on ,previous projects had this line
     props.onUpdateAvatar({
       avatar: avatarRef.current.value,
     });
