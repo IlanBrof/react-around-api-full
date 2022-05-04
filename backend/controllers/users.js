@@ -40,7 +40,7 @@ const getCurrentUser = async (req, res, next) => {
     const token = req.headers.authorization.replace('Bearer ', '');
     const payload = await jwt.verify(
       token,
-      NODE_ENV === 'production' ? JWT_SECRET : 'super-secret-key'
+      NODE_ENV === 'production' ? JWT_SECRET : 'super-secret-key',
     );
     const user = await User.findById(payload._id);
     return res.status(200).send(user);
@@ -53,7 +53,9 @@ const getCurrentUser = async (req, res, next) => {
 };
 
 const createUser = async (req, res, next) => {
-  const { name, about, avatar, email, password } = req.body;
+  const {
+    name, about, avatar, email, password,
+  } = req.body;
   const salt = 10;
   try {
     const uniqueEmailTest = await User.findOne({ email });
@@ -71,14 +73,12 @@ const createUser = async (req, res, next) => {
         password: hashedPassword,
       });
       if (newUser) {
-        res
-          .status(201)
-          .send({
-            name: newUser.name,
-            about: newUser.about,
-            avatar: newUser.avatar,
-            email: newUser.email,
-          });
+        res.status(201).send({
+          name: newUser.name,
+          about: newUser.about,
+          avatar: newUser.avatar,
+          email: newUser.email,
+        });
       }
     }
   } catch (err) {
@@ -103,7 +103,7 @@ const login = async (req, res, next) => {
     const token = jwt.sign(
       { _id: user._id },
       NODE_ENV === 'production' ? JWT_SECRET : 'super-secret-key',
-      { expiresIn: '7d' }
+      { expiresIn: '7d' },
     );
     res.status(200).send({ token });
   } catch (err) {
@@ -117,7 +117,7 @@ const patchUserAvatar = async (req, res, next) => {
     const updateData = await User.findByIdAndUpdate(
       req.user._id,
       { avatar },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     if (updateData && avatar) {
       return res
