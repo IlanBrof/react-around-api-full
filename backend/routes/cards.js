@@ -1,6 +1,7 @@
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 const validateURL = require('../middleware/validateURL');
+
 const router = express.Router();
 const {
   getCards,
@@ -10,28 +11,29 @@ const {
   dislikeCard,
   deleteCard,
 } = require('../controllers/cards');
-////////////GET REQUESTS////////////
+/// /////////GET REQUESTS////////////
 router.get(
   '/',
   celebrate({
     headers: Joi.object().keys({}).unknown(true),
   }),
-  getCards
+  getCards,
 );
 
 router.get(
   '/:cardId',
   celebrate({
     params: Joi.object().keys({
-      cardId: Joi.string().required().alphanum().hex().length(24),
+      cardId: Joi.string().required().alphanum().hex()
+        .length(24),
     }),
     headers: Joi.object().keys({}).unknown(true),
   }),
-  getCardById
+  getCardById,
 );
-////////////END OF GET REQUESTS////////////
+/// /////////END OF GET REQUESTS////////////
 
-////////////POST REQUESTS////////////
+/// /////////POST REQUESTS////////////
 router.post(
   '/',
   celebrate({
@@ -41,11 +43,11 @@ router.post(
       link: Joi.string().required().custom(validateURL),
     }),
   }),
-  createCard
+  createCard,
 );
-////////////END OF POST REQUESTS////////////
+/// /////////END OF POST REQUESTS////////////
 
-////////////PUT REQUESTS////////////
+/// /////////PUT REQUESTS////////////
 router.put(
   '/:cardId/likes',
   celebrate({
@@ -54,11 +56,11 @@ router.put(
     }),
     headers: Joi.object().keys({}).unknown(true),
   }),
-  likeCard
+  likeCard,
 );
-////////////END OF PUT REQUESTS////////////
+/// /////////END OF PUT REQUESTS////////////
 
-////////////DELETE REQUESTS////////////
+/// /////////DELETE REQUESTS////////////
 router.delete(
   '/:cardId/likes',
   celebrate({
@@ -67,19 +69,20 @@ router.delete(
     }),
     headers: Joi.object().keys({}).unknown(true),
   }),
-  dislikeCard
+  dislikeCard,
 );
 
 router.delete(
   '/:cardId',
   celebrate({
     params: Joi.object().keys({
-      cardId: Joi.string().required().alphanum().hex().length(24),
+      cardId: Joi.string().required().alphanum().hex()
+        .length(24),
     }),
     headers: Joi.object().keys({}).unknown(true),
   }),
-  deleteCard
+  deleteCard,
 );
-////////////END OF DELETE REQUESTS////////////
+/// /////////END OF DELETE REQUESTS////////////
 
 module.exports = router;

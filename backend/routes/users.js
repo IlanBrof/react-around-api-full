@@ -1,5 +1,7 @@
 const express = require('express');
+
 const router = express.Router();
+const { celebrate, Joi } = require('celebrate');
 const {
   getUsers,
   getUserById,
@@ -10,16 +12,15 @@ const {
 } = require('../controllers/users');
 
 // validators
-const { celebrate, Joi } = require('celebrate');
 const validateURL = require('../middleware/validateURL');
 
-////////////GET REQUESTS////////////
+/// /////////GET REQUESTS////////////
 router.get(
   '/',
   celebrate({
     headers: Joi.object().keys({}).unknown(true),
   }),
-  getUsers
+  getUsers,
 );
 
 router.get(
@@ -27,7 +28,7 @@ router.get(
   celebrate({
     headers: Joi.object().keys({}).unknown(true),
   }),
-  getCurrentUser
+  getCurrentUser,
 );
 
 router.get(
@@ -38,11 +39,11 @@ router.get(
     }),
     headers: Joi.object().keys({}).unknown(true),
   }),
-  getUserById
+  getUserById,
 );
-////////////END OF GET REQUESTS////////////
+/// /////////END OF GET REQUESTS////////////
 
-////////////PATCH REQUESTS////////////
+/// /////////PATCH REQUESTS////////////
 router.patch(
   '/me',
   celebrate({
@@ -52,7 +53,7 @@ router.patch(
       about: Joi.string().min(2).max(30).required(),
     }),
   }),
-  patchUserData
+  patchUserData,
 );
 
 router.patch(
@@ -63,11 +64,11 @@ router.patch(
       avatar: Joi.string().custom(validateURL),
     }),
   }),
-  patchUserAvatar
+  patchUserAvatar,
 );
-////////////END OF PATCH REQUESTS////////////
+/// /////////END OF PATCH REQUESTS////////////
 
-////////////DELETE REQUESTS////////////
+/// /////////DELETE REQUESTS////////////
 router.delete(
   '/:userId',
   celebrate({
@@ -76,8 +77,8 @@ router.delete(
     }),
     headers: Joi.object().keys({}).unknown(true),
   }),
-  deleteUser
+  deleteUser,
 );
-////////////END OF DELETE REQUESTS////////////
+/// /////////END OF DELETE REQUESTS////////////
 
 module.exports = router;

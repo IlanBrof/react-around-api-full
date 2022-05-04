@@ -14,7 +14,7 @@ const cardSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /https?:\/\/[www.]?\S+/gi.test(v);
+        return validatorModule.isURL(v);
       },
     },
   },

@@ -8,7 +8,7 @@ function EditProfilePopup(props) {
   const [profileDescription, setProfileDescription] = React.useState('');
 
   function handleSubmit(e) {
-    e.preventDefault(); // This will cause the page to reload, the data is not being rendered with this on ,previous projects had this line
+    // e.preventDefault(); // This will cause the page to reload, the data is not being rendered with this on ,previous projects had this line
     props.onUpdateUserInfo({
       name: profileName,
       about: profileDescription,

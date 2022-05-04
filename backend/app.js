@@ -1,19 +1,20 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv').config(); //eslint-disable-line
 const cors = require('cors');
 const helmet = require('helmet');
+const { celebrate, Joi, errors } = require('celebrate');
+const mongoose = require('mongoose');
 const auth = require('./middleware/auth');
 
 const app = express();
 const { PORT = 3000 } = process.env;
-const mongoose = require('mongoose');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
-const { celebrate, Joi, errors } = require('celebrate');
 const validateURL = require('./middleware/validateURL');
-const { requestLogger, errorLogger } = require('./middleware/logger'); 
+const { requestLogger, errorLogger } = require('./middleware/logger');
+const serverErr = require('./middleware/errors/Server');
 
 mongoose.connect('mongodb://localhost:27017/aroundb');
 
@@ -31,7 +32,7 @@ app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Server will crash now');
   }, 0);
-}); 
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -40,8 +41,8 @@ app.post('/signup', celebrate({
     avatar: Joi.string().custom(validateURL),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-  })
-}),createUser);
+  }),
+}), createUser);
 
 app.post(
   '/signin',
@@ -51,24 +52,17 @@ app.post(
       password: Joi.string().required(),
     }),
   }),
-  login
+  login,
 );
 
 app.use(auth);
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
 
-
 app.use(errorLogger);
 app.use(errors()); // celebrate error handler
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  res.status(statusCode).send({
-    // check the status and display a message based on it
-    message: statusCode === 500 ? 'An error occurred on the server' : message,
-  });
-});
+app.use(serverErr);
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}...`);
+  console.log(`Server listening on port ${PORT}...`); //eslint-disable-line
 });
